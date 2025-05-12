@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Resume Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+    #output {
+      margin-top: 30px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>AI Resume Builder</h2>
+    <input type="text" id="name" placeholder="Full Name" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="text" id="skills" placeholder="Skills (e.g., HTML, CSS, JS)" />
+    <textarea id="experience" rows="4" placeholder="Experience"></textarea>
+    <textarea id="education" rows="3" placeholder="Education"></textarea>
+    <textarea id="projects" rows="3" placeholder="Projects (mention your best projects...)"></textarea>
+    <button onclick="generateResume()">Generate Resume</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function generateResume() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const skills = document.getElementById("skills").value;
+      const experience = document.getElementById("experience").value;
+      const education = document.getElementById("education").value;
+      const projects = document.getElementById("projects").value;
+
+      const output = `
+        <h3>${name}</h3>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Skills:</strong> ${skills}</p>
+        <p><strong>Experience:</strong><br>${experience.replace(/\n/g, "<br>")}</p>
+        <p><strong>Education:</strong><br>${education.replace(/\n/g, "<br>")}</p>
+        <p><strong>Projects:</strong><br>${projects.replace(/\n/g, "<br>")}</p>
+      `;
+      document.getElementById("output").innerHTML = output;
+    }
+  </script>
+</body>
+</html>
